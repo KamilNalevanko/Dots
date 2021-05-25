@@ -1,0 +1,45 @@
+﻿@using DotsWeb.Models;
+@model DotsModel
+
+@{
+    ViewData["Title"] = "NPuzzle";
+}
+
+<h1 class="nazov">Dots</h1>
+
+
+<h2>Skóre: @Model.Skore</h2>  <p>Počet ťahov @Model.PocetTahov/20</p>
+
+<table class="table-style">
+
+  
+    @for (int i = 0; i < Model.Pole.GetLength(0); i++)
+    {
+        <tr>
+            @for (int j = 0; j < Model.Pole.GetLength(1); j++)
+            {
+                string zvolene = "";
+
+                if (Model.tileList.Find(x => x.X == j && x.Y == i) != null)
+                {
+                    zvolene = "select";
+                }
+
+
+                <td>
+
+                    <div style="margin: 5px">
+                        <div class="box@(Model.Pole[j, i]) @zvolene">
+                            <a href="/Dots/SelectTile?x=@j&y=@i"><div style="width:80px; height: 65px"></div></a>
+                        </div>
+                    </div>
+
+                </td>
+
+            }
+        </tr>
+
+    }
+</table>
+
+<a href="/Dots/EndTurn/" class="koniec">Ukončiť výber</a>

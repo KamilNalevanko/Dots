@@ -1,0 +1,18 @@
+﻿@using DotsWeb.Models;
+@model DotsModel
+
+
+@{
+    ViewData["Title"] = "EndGame";
+}
+
+<h1>Koniec hry</h1>
+
+
+<h2>Tvoje skóre: @Model.Skore</h2>
+
+<form action="/Dots/UlozSkore" method="get">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <input type="submit" value="Submit">
+</form>
